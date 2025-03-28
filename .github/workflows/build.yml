@@ -72,7 +72,6 @@ jobs:
       # secrets-yaml-file: ${{ secrets.ESPHOME_SECRETS_YAML }}
       secrets-yaml-file-path: trainsounds/secrets.yaml
 
-
   comment:
     if: github.event_name == 'pull_request'
     name: Comment on PR
