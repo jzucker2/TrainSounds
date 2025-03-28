@@ -36,14 +36,20 @@ jobs:
             echo "provide pull request files"
             {
               echo 'content<<EOF'
+              echo "trainsounds/dev_train_sounds.yaml"
+              echo "trainsounds/ha_train_sounds.yaml"
               echo "trainsounds/simple_train_sounds.yaml"
+              echo "trainsounds/unpaired_train_sounds.yaml"
               echo EOF
             } >> "$GITHUB_OUTPUT"
           else
             echo "provide all release files"
             {
               echo 'content<<EOF'
+              echo "trainsounds/dev_train_sounds.yaml"
+              echo "trainsounds/ha_train_sounds.yaml"
               echo "trainsounds/simple_train_sounds.yaml"
+              echo "trainsounds/unpaired_train_sounds.yaml"
               echo EOF
             } >> "$GITHUB_OUTPUT"
           fi

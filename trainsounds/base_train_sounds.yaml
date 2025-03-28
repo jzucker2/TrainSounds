@@ -1,0 +1,87 @@
+packages:
+  # Not using default so we can turn off the light on boot
+  esphome: !include common/train_sounds_esphome.yaml
+  esp32: !include common/m5atom_device.yaml
+  light: !include {file: common/atom_light.yaml, vars: {light_pin: 27}}
+  safe_mode: !include common/safe_mode.yaml
+  web_server: !include common/web_server.yaml
+  http: !include common/http.yaml
+  version: !include common/version.yaml
+  wifi_info: !include common/wifi_info.yaml
+  uptime: !include common/uptime.yaml
+  wifi_signal_sensor: !include common/wifi_signal_sensor.yaml
+  internal_temp: !include common/internal_temp.yaml
+  prometheus: !include common/prometheus.yaml
+  project_info: !include common/project_info.yaml
+  i2s_audio: !include common/i2s_audio.yaml
+  media_player: !include common/media_player.yaml
+
+globals:
+  - id: train_sounds_list
+    type: std::vector<std::string>
+    restore_value: no
+    initial_value: '{"https://www.soundjay.com/transportation/train-crossing-bell-01.mp3",
+                    "https://www.soundjay.com/transportation/train-depart-with-whistle-01.mp3",
+                    "https://www.soundjay.com/transportation/train-pass-by-with-whistle-01.mp3",
+                    "https://www.soundjay.com/transportation/train-whistle-01.mp3"}'
+
+# https://esphome.io/components/script.html
+script:
+  - id: play_train_sound_script
+    parameters:
+      train_sound_url: string
+    mode: restart
+    then:
+      - if:
+          condition:
+            media_player.is_playing: media_out
+          then:
+            - media_player.stop:
+                id: media_out
+      - light.turn_on:
+          id: ${onboard_light_id}
+          brightness: 100%
+          # green
+          red: 0%
+          green: 100%
+          blue: 0%
+      - logger.log: 'Start play_train_sound_script'
+      - media_player.play_media:
+          id: media_out
+          media_url: !lambda return train_sound_url;
+      - delay: 1s
+      - wait_until:
+          media_player.is_idle: media_out
+      - logger.log: 'Finished playing sound in play_train_sound_script'
+      - light.turn_off:
+          id: ${onboard_light_id}
+      - logger.log: 'Finish (fully) play_train_sound_script'
+
+binary_sensor:
+  - platform: gpio
+    pin:
+      # pin can ghost on sometimes https://community.m5stack.com/topic/3955/atom-button-at-gpio39-without-pullup/4
+      number: GPIO39
+      inverted: true
+    name: ${friendly_name} Button
+    publish_initial_state: false
+    on_press:
+      - logger.log: "Button pressed, begin custom actions"
+      - button.press: play_random_train_sound_button
+
+button:
+  - platform: template
+    id: play_remote_train_sound_button
+    name: "Play Remote Train Sound"
+    on_press:
+      - script.execute:
+          id: play_train_sound_script
+          train_sound_url: "${first_train_sound_url}"
+
+  - platform: template
+    id: play_random_train_sound_button
+    name: "Play Random Train Sound"
+    on_press:
+      - script.execute:
+          id: play_train_sound_script
+          train_sound_url: !lambda 'return id(train_sounds_list)[(rand() % 4)].c_str();'
