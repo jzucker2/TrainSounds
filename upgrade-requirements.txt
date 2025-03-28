@@ -1,0 +1,2 @@
+esphome
+CairoSVG==2.7.1

@@ -1,0 +1,12 @@
+# https://esphome.io/components/text_sensor/version
+text_sensor:
+  - platform: version
+    # example => `2024.3.2 Apr 12 2024, 16:46:11`
+    name: "ESPHome Version Detailed"
+    id: esphome_version_text_detailed
+
+  - platform: version
+    # example => `2024.3.2`
+    name: "ESPHome Version"
+    id: esphome_version_text_short
+    hide_timestamp: true
