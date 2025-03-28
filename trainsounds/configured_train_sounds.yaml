@@ -1,9 +1,9 @@
 substitutions:
-  node_name: simpletrainsounds
-  friendly_name: "Simple Train Sounds"
+  node_name: configuredtrainsounds
+  friendly_name: "Configured Train Sounds"
   area: Dev
-  comment: "This is a really simple dev version of a toy for someone special"
-  box_config_file_name: simple_train_sounds
+  comment: "This is a version that has wifi pre-configured as a secret"
+  box_config_file_name: configured_train_sounds
   onboard_light_id: "atom_light"
   train_sounds_script_mode: restart
   # FIXME: make this dynamic
