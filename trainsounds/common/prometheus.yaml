@@ -1,0 +1,9 @@
+# https://esphome.io/components/prometheus.html
+# Activates prometheus /metrics endpoint
+external_components:
+  - source: github://pr#8247
+    components: [prometheus]
+    refresh: 0s
+
+prometheus:
+  include_internal: true
