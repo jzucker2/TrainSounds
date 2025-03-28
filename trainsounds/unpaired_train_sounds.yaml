@@ -2,7 +2,7 @@ substitutions:
   node_name: unpairedtrainsounds
   friendly_name: "Unpaired Train Sounds"
   area: Dev
-  comment: "This is a version with no hardcoded wifi that connect to anywhere"
+  comment: "This is a version with no hardcoded wifi that can connect to anywhere"
   box_config_file_name: unpaired_train_sounds
   onboard_light_id: "atom_light"
   train_sounds_script_mode: restart
