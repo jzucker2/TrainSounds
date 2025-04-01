@@ -20,7 +20,7 @@ cryptography==44.0.2
 cssselect2==0.8.0
 defusedxml==0.7.1
 ecdsa==0.19.1
-esphome==2025.3.2
+esphome==2025.3.3
 esphome-dashboard==20250212.0
 esphome-glyphsets==0.1.0
 esptool==4.8.1
