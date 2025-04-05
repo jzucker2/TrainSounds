@@ -1,15 +1,7 @@
-# https://esphome.io/components/esp32.html
-# https://github.com/esphome/wake-word-voice-assistants/blob/main/m5stack-atom-echo/m5stack-atom-echo.yaml
-esp32:
-  board: m5stack-atom
-  framework:
-    type: esp-idf
-    version: 4.4.8
-    platform_version: 5.4.0
-
 packages:
   # Not using default so we can turn off the light on boot
   esphome: !include common/simple_esphome.yaml
+  esp32: !include common/m5atom_echo_idf_device.yaml
   factory_reset: !include common/factory_reset.yaml
   safe_mode: !include common/safe_mode.yaml
   web_server: !include common/web_server.yaml
