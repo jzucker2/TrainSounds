@@ -11,6 +11,6 @@ media_player:
     buffer_size: 6000
     files:
       - id: train_crossing_mp3_file
-        file: https://www.soundjay.com/transportation/train-crossing-bell-01.mp3
+        file: https://www.soundjay.com/transportation/train-crossing-bell-01.wav
       - id: train_whistle_mp3_file
-        file: https://www.soundjay.com/transportation/train-whistle-01.mp3
+        file: https://www.soundjay.com/transportation/train-whistle-01.wav
