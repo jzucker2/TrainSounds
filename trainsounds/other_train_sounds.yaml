@@ -1,0 +1,20 @@
+substitutions:
+  node_name: othertrainsounds
+  friendly_name: "Other Train Sounds"
+  area: Dev
+  comment: "This is a really basic esp-idf version to test other way of playing sounds"
+  box_config_file_name: other_train_sounds
+  onboard_light_id: "atom_light"
+  train_sounds_script_mode: restart
+  # FIXME: make this dynamic
+  first_train_sound_url: "https://www.soundjay.com/transportation/train-crossing-bell-01.mp3"
+  second_train_sound_url: "https://www.soundjay.com/transportation/train-depart-with-whistle-01.mp3"
+  third_train_sound_url: "https://www.soundjay.com/transportation/train-pass-by-with-whistle-01.mp3"
+  fourth_train_sound_url: "https://www.soundjay.com/transportation/train-whistle-01.mp3"
+
+packages:
+  esphome: !include common/simple_esphome.yaml
+  # logging: !include common/default_logger.yaml
+  logging: !include common/debug_logger.yaml
+  wifi: !include common/wifi.yaml
+  base_train_sounds: !include base_idf_train_sounds.yaml

@@ -4,6 +4,7 @@ packages:
   esp32: !include common/m5atom_device.yaml
   light: !include {file: common/atom_light.yaml, vars: {light_pin: 27}}
   safe_mode: !include common/safe_mode.yaml
+  factory_reset: !include common/factory_reset.yaml
   web_server: !include common/web_server.yaml
   http: !include common/http.yaml
   version: !include common/version.yaml
