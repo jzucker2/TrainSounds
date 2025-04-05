@@ -13,8 +13,10 @@ packages:
   internal_temp: !include common/internal_temp.yaml
   prometheus: !include common/prometheus.yaml
   project_info: !include common/project_info.yaml
-  media_player: !include common/speaker_mp3_media_player.yaml
-  switch: !include common/switch_speaker_mp3.yaml
+  # media_player: !include common/speaker_mp3_media_player.yaml
+  # switch: !include common/switch_speaker_mp3.yaml
+  media_player: !include common/speaker_example_media_player.yaml
+  switch: !include common/switch_speaker_example.yaml
 
 i2s_audio:
   - id: i2s_audio_bus
